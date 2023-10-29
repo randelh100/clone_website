@@ -1,53 +1,34 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { FaPause, FaPlay } from 'react-icons/fa';
 
-const PlayPause = ({ isPlaying, duration, startTime, nextSlideTime, togglePlayPause }) => {
+const PlayPause = ({ isPlaying, togglePlayPause, duration, startTime, nextSlideTime }) => {
   const circle = useRef(null);
-  let animationRef = useRef(null);
-  const [strokeOffset, setStrokeOffset] = useState(null);
+  let animationId;
 
+  const setProgress = () => {
+    const currentTime = Date.now();
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const circumference = circle.current.r.baseVal.value * 2 * Math.PI;
+    const offset = circumference - (progress * circumference);
+    circle.current.style.strokeDashoffset = offset;
+  };
 
   useEffect(() => {
-    if (!circle.current) return;
-    console.log(circle.current.style.strokeDasharray)
-
     const circumference = circle.current.r.baseVal.value * 2 * Math.PI;
     circle.current.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.current.style.strokeDashoffset = circumference;
-
-  
-    const resetAndProgress = () => {
-      const currentTime = Date.now();
-      const timeLeft = nextSlideTime - duration;
-      if (timeLeft <= 0) return;  // Guard clause to prevent negative duration
-      
-
-      circle.current.style.strokeDashoffset = strokeOffset;
-
-      const offsetPerMs = circumference / (duration);
-      const finalOffset = circumference - (timeLeft * offsetPerMs);
-console.log(finalOffset)
-      animationRef.current = circle.current.animate(
-        [{ strokeDashoffset: `${strokeOffset}` }, { strokeDashoffset: `${finalOffset}` }],
-        {
-          duration: timeLeft,
-          fill: 'forwards',
-        }
-      );
-    };
-
-    if (animationRef.current) {
-      animationRef.current.cancel(); // Cancel existing animation
-    }
+    circle.current.style.strokeDashoffset = `${circumference}`;
 
     if (isPlaying) {
-      resetAndProgress();
+      animationId = setInterval(() => {
+        setProgress();
+      }, 50);
     } else {
-      setStrokeOffset(finalOffset)
+      clearInterval(animationId);
     }
-  }, [isPlaying, duration, startTime, nextSlideTime]);
 
-
+    return () => clearInterval(animationId);
+  }, [isPlaying, startTime]);
 
   return (
     <div className='relative'>

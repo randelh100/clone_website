@@ -37,7 +37,7 @@ function Slider() {
 
     const handleSlideEnd = () => {
         const newStartTime = Date.now();
-        setStartTime(newStartTime);
+        // setStartTime(newStartTime);
         setNextSlideTime(newStartTime + slideDuration);
         setRemainingTime(slideDuration);
     };
@@ -95,11 +95,13 @@ function Slider() {
             <div className="absolute right-0 bottom-0 flex space-x-4">
                 <SliderUiControl
                     isPlaying={isPlaying}
-                    togglePlayPause={togglePlayPause}
+                    setIsPlaying={setIsPlaying}
                     duration={remainingTime}
                     startTime={startTime}
                     nextSlideTime={nextSlideTime}
                     remainingTime={remainingTime}
+                    togglePlayPause={togglePlayPause}
+                    setStartTime={setStartTime}
                 />
             </div>
         </div>
