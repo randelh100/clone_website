@@ -1,27 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* styles/global.css */
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.carousel-control-prev,
+.carousel-control-next {
+  top: 75% !important; /* Adjust as needed */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.carousel-control-prev {
+  left: 87% !important; /* Adjust as needed */
+}
+
+.carousel-control-next {
+  left: 90% !important; /* Adjust as needed */
+}
+
+.carousel-control-ui {
+  left: 93% !important; /* Adjust as needed */
+}
+
+body .carousel-control-prev,
+body .carousel-control-next {
+  justify-content: flex-start; /* or any other value that you want */
+  margin-left: 4% !important; /* Adjust as needed */
+}
+
+.custom-slider-ui-control {
+    position: absolute;
+    bottom: 5%; /* Match with the top position of the prev/next buttons */
+    left: 65%; /* Center it horizontally */
+    z-index: 50; /* Set the z-index to ensure it doesn't overlap with other elements */
+    cursor: pointer;
   }
+
+  .carousel-control-prev, .carousel-control-next {
+    display: none !important;
+  }
+  
+  /* Hide default indicators */
+.custom-carousel .carousel-indicators {
+  display: none !important;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
