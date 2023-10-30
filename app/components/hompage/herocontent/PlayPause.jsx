@@ -1,51 +1,57 @@
-import React, { useRef, useEffect } from 'react';
-import { FaPause, FaPlay } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaPlay, FaPause } from 'react-icons/fa';
 
-const PlayPause = ({ isPlaying, togglePlayPause, duration, startTime, nextSlideTime }) => {
-  const circle = useRef(null);
-  let animationId;
-
-  const setProgress = () => {
-    const currentTime = Date.now();
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const circumference = circle.current.r.baseVal.value * 2 * Math.PI;
-    const offset = circumference - (progress * circumference);
-    circle.current.style.strokeDashoffset = offset;
-  };
+const Test = ({ togglePlayPause, isPlaying }) => {
+  const [progress, setProgress] = useState(0);
+  const duration = 8000; // 8 seconds
+  const radius = 17;
+  const circumference = 2 * Math.PI * radius;
 
   useEffect(() => {
-    const circumference = circle.current.r.baseVal.value * 2 * Math.PI;
-    circle.current.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.current.style.strokeDashoffset = `${circumference}`;
+    let interval;
 
     if (isPlaying) {
-      animationId = setInterval(() => {
-        setProgress();
-      }, 50);
+      interval = setInterval(() => {
+        setProgress((prevProgress) => {
+          const newProgress = prevProgress + 50;
+          if (newProgress >= duration) {
+            return 0;
+          }
+          return newProgress;
+        });
+      }, 50); // Update every 50ms
     } else {
-      clearInterval(animationId);
+      clearInterval(interval);
     }
 
-    return () => clearInterval(animationId);
-  }, [isPlaying, startTime]);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isPlaying]);
+
+  const strokeDashoffset = circumference - (progress / duration) * circumference;
 
   return (
-    <div className='relative'>
-      <svg height="100" width="100">
-        <circle stroke="black" strokeWidth="0" fill="black" r="21" cx="50" cy="50" />
-        <circle ref={circle} stroke="white" strokeWidth="1.5" fill="black" r="17" cx="50" cy="50" />
+    <div className="relative w-[100px] h-[100px]">
+      <svg className="absolute top-0 left-0 z-0 w-full h-full">
+        <circle
+          stroke="white"
+          strokeWidth="1.5"
+          fill="black"
+          r={radius}
+          cx="50"
+          cy="50"
+          strokeDasharray={circumference}
+          strokeDashoffset={strokeDashoffset}
+        />
       </svg>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <button
-          className="bg-black w-5 h-5 rounded-full flex items-center justify-center cursor-pointer"
-          onClick={togglePlayPause}
-        >
-          {isPlaying ? <FaPause className="text-white" style={{ width: '10px', height: '10px' }} /> : <FaPlay className="text-white" style={{ width: '10px', height: '10px' }} />}
+      <div className="absolute top-0 left-0 z-10 w-full h-full flex items-center justify-center">
+        <button className="focus:outline-none" onClick={togglePlayPause}>
+          {!isPlaying ? <FaPlay className="text-white" /> : <FaPause className="text-white" />}
         </button>
       </div>
     </div>
   );
-}
+};
 
-export default PlayPause;
+export default Test;

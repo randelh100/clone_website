@@ -13,36 +13,48 @@ import React from 'react';
 import { useRef } from 'react';
 
 
+
 function Slider() {
     const slideDuration = 8000;
     const [isPlaying, setIsPlaying] = useState(true);
     const [startTime, setStartTime] = useState(Date.now());
     const [nextSlideTime, setNextSlideTime] = useState(Date.now() + slideDuration);
     const [remainingTime, setRemainingTime] = useState(slideDuration);
+    const [elapsedTime, setElapsedTime] = useState(0); // New state to track elapsed time
     const carouselRef = useRef(null);
+    const [currentSlide, setCurrentSlide] = useState(0); // New state to track current slide
+
 
     useEffect(() => {
+
         if (isPlaying) {
-            const currentTime = Date.now();
-            setStartTime(currentTime);
-            setNextSlideTime(currentTime + remainingTime);
+            // Calculate remaining time and start time based on elapsed time
+            const remaining = slideDuration - elapsedTime;
+            setStartTime(Date.now() - elapsedTime);
+            setNextSlideTime(Date.now() + remaining);
+            setRemainingTime(remaining);
         } else {
             const elapsed = Date.now() - startTime;
-            const remaining = slideDuration - elapsed;
-            setRemainingTime(remaining);
+            setElapsedTime(elapsed);
+            setRemainingTime(slideDuration - elapsed);
         }
+
     }, [isPlaying]);
 
-    const togglePlayPause = () => setIsPlaying(!isPlaying);
 
-    const handleSlideEnd = () => {
-        const newStartTime = Date.now();
-        // setStartTime(newStartTime);
-        setNextSlideTime(newStartTime + slideDuration);
-        setRemainingTime(slideDuration);
+    const togglePlayPause = () => {
+        setIsPlaying(!isPlaying);
     };
 
 
+    const handleSlideEnd = () => {
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % 3); // Update current slide
+        const newStartTime = Date.now();
+        setStartTime(newStartTime);
+        setNextSlideTime(newStartTime + slideDuration);
+        setRemainingTime(slideDuration);
+        setElapsedTime(0); // Reset elapsed time
+    };
 
     return (
 
@@ -53,6 +65,7 @@ function Slider() {
                 slide={false}
                 interval={isPlaying ? remainingTime : null}
                 onSlide={handleSlideEnd}
+                indicators={false}  // Set to false to hide default indicators
             >
                 <Carousel.Item>
                     <Image
@@ -62,7 +75,6 @@ function Slider() {
                         height={300}
                     />
                     <Carousel.Caption>
-
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -76,7 +88,6 @@ function Slider() {
                         <h3>2024 Prologue</h3>
                         <p>All-electric. Coming 2024.</p>
                         <button className='bg-blue-500 rounded-full p-2'>LEARN MORE</button>
-
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -93,19 +104,22 @@ function Slider() {
                 </Carousel.Item>
             </Carousel>
             <div className="absolute right-0 bottom-0 flex space-x-4">
+            <SlideIndicator
+                currentSlide={currentSlide}
+                totalSlides={3} /> {/* Included SlideIndicator */}
+                
                 <SliderUiControl
                     isPlaying={isPlaying}
-                    setIsPlaying={setIsPlaying}
                     duration={remainingTime}
                     startTime={startTime}
                     nextSlideTime={nextSlideTime}
                     remainingTime={remainingTime}
                     togglePlayPause={togglePlayPause}
-                    setStartTime={setStartTime}
                 />
             </div>
         </div>
     );
 }
+
 
 export default Slider;
