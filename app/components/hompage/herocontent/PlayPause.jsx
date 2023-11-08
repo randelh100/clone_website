@@ -29,7 +29,8 @@ const Test = ({ togglePlayPause, isPlaying }) => {
     };
   }, [isPlaying]);
 
-  const strokeDashoffset = circumference - (progress / duration) * circumference;
+  // Reverse the animation effect here
+  const strokeDashoffset = (progress / duration) * circumference;
 
   return (
     <div className="relative w-[100px] h-[100px]">
@@ -43,6 +44,7 @@ const Test = ({ togglePlayPause, isPlaying }) => {
           cy="50"
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
+          transform="scale(-1, 1) translate(-100, 0) rotate(-90 50 50)"
         />
       </svg>
       <div className="absolute top-0 left-0 z-10 w-full h-full flex items-center justify-center">

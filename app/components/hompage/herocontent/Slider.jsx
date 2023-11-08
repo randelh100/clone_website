@@ -11,6 +11,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import React from 'react';
 import { useRef } from 'react';
+import CarouselImage from './CarouselImage';
+import CarouselCaption from './CarouselCaption';
 
 
 
@@ -23,7 +25,7 @@ function Slider() {
     const [elapsedTime, setElapsedTime] = useState(0); // New state to track elapsed time
     const carouselRef = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(0); // New state to track current slide
-
+    const [keyForPlayPause, setKeyForPlayPause] = useState(0);
 
     useEffect(() => {
 
@@ -56,6 +58,19 @@ function Slider() {
         setElapsedTime(0); // Reset elapsed time
     };
 
+    const handlePrevClick = () => {
+        carouselRef.current.prev();
+        setIsPlaying(false);
+        setKeyForPlayPause((prevKey) => prevKey + 1);
+    };
+
+    const handleNextClick = () => {
+        carouselRef.current.next();
+        setIsPlaying(false);
+        setKeyForPlayPause((prevKey) => prevKey + 1);
+    };
+
+
     return (
 
         <div className='relative'> {/* Container set to relative */}
@@ -68,46 +83,38 @@ function Slider() {
                 indicators={false}  // Set to false to hide default indicators
             >
                 <Carousel.Item>
-                    <Image
+                    <CarouselImage
                         src={CarouselImage1}
                         alt="First slide"
                         width={3000}
                         height={300}
                     />
-                    <Carousel.Caption>
-                    </Carousel.Caption>
+                    <CarouselCaption />
                 </Carousel.Item>
                 <Carousel.Item>
-                    <Image
+                    <CarouselImage
                         src={CarouselImage2}
                         alt="Second slide"
                         width={3000}
                         height={300}
                     />
-                    <Carousel.Caption className='absolute flex justify-start'>
-                        <h3>2024 Prologue</h3>
-                        <p>All-electric. Coming 2024.</p>
-                        <button className='bg-blue-500 rounded-full p-2'>LEARN MORE</button>
-                    </Carousel.Caption>
+                    <CarouselCaption title="2024 Prologue" description="All-electric. Coming 2024." actionLabel="LEARN MORE" />
                 </Carousel.Item>
                 <Carousel.Item>
-                    <Image
+                    <CarouselImage
                         src={CarouselImage3}
                         alt="Third slide"
                         width={3000}
                         height={300}
                     />
-                    <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
+                    <CarouselCaption title="2024 Accord" description="Sleek style meets  spirited performance in the 2024 Accord." actionLabel="LEARN MORE" />
+                </Carousel.Item>                
             </Carousel>
-            <div className="absolute right-0 bottom-0 flex space-x-4">
+
+            <div className="absolute right-0 bottom-0 flex">
             <SlideIndicator
-                currentSlide={currentSlide}
-                totalSlides={3} /> {/* Included SlideIndicator */}
-                
+        currentSlide={currentSlide}
+        totalSlides={3} /> {/* Included SlideIndicator */}
                 <SliderUiControl
                     isPlaying={isPlaying}
                     duration={remainingTime}
@@ -115,8 +122,14 @@ function Slider() {
                     nextSlideTime={nextSlideTime}
                     remainingTime={remainingTime}
                     togglePlayPause={togglePlayPause}
+                    onPrevClick={handlePrevClick}
+                    onNextClick={handleNextClick}
+                    keyForPlayPause={keyForPlayPause}
                 />
             </div>
+            <div className='relative left-0 bottom-6 text-white ml-12 text-xs'>
+                <p>2024 Prologue Elite shown in North Shore Pearl.*</p>
+                </div>
         </div>
     );
 }
