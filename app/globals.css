@@ -43,3 +43,8 @@ body .carousel-control-next {
   display: none !important;
 }
 
+/* Add this to your CSS file */
+.hover-grow:hover {
+  transform: scale(1.1); /* Adjust scale value to how much you want the icon to grow */
+  transition: transform 0.3s; /* Smooth transition for the transform */
+}

@@ -1,82 +1,39 @@
+'use client';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
+const Nav = () => {
+    const [hasScrolled, setHasScrolled] = useState(false);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            setHasScrolled(window.scrollY > 10);
+        };
 
-const Nav = async () => {
+        window.addEventListener('scroll', handleScroll);
+
+        // Clean up the scroll listener
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Define a function to determine the text class based on whether the page has scrolled
+    const linkClass = hasScrolled ? 'text-black' : 'text-white';
+
     return (
-        <div className="">
-            <nav className="fixed top-7 right-0 z-50 flex items-center gap-5 pr-28">
+        <div>
+            <nav className={`fixed top-0 flex justify-end gap-5 w-full h-14 pr-20 transition-colors duration-300 ${hasScrolled ? 'bg-white shadow-md' : ''}`}>
                 <ul className='flex items-center gap-10'>
-                    <li>
-                        <Link
-                            href={"/"}
-                            className="text-white"
-                        >
-                            Vehicles
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={"/"}
-                            className="text-white"
-                        >
-                            Shopping Tools
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={"/"}
-                            className="text-white"
-                        >
-                            Owners
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={"/"}
-                            className="text-white"
-                        >
-                            Explore
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={"/"}
-                            className="text-white"
-                        >
-                            Find a dealer
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={"/"}
-                            className="text-white"
-                        >
-                            EN
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={"/"}
-                            className="text-white"
-                            >
-                                locations
-                            
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={"/"}
-                            className="text-white"
-                        >
-                            Search
-                        </Link>
-                    </li>
+                    {['Vehicles', 'Shopping Tools', 'Owners', 'Explore', 'Find a Dealer', 'EN', 'Locations', 'Search'].map((text) => (
+                        <li key={text}>
+                            <Link href="/">
+                                <span className={`cursor-pointer no-underline hover:underline ${linkClass}`}>
+                                    {text}
+                                </span>
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
             </nav>
-            <div className=''>
-                
-            </div>
         </div>
     );
 }

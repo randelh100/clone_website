@@ -1,8 +1,7 @@
-import Image from 'next/image'
-import Nav from '../app/components/Nav'
 import CarouselFadeExample from './components/hompage/herocontent/Slider'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Vehicles from './components/hompage/Vehicles'
+import Vehicles from './components/hompage/vehiclecontent/Vehicles'
+import ToolsTabs from './components/hompage/shoppingtools/ToolsTabs'
 
 
 export default function Home() {
@@ -11,6 +10,7 @@ export default function Home() {
       <div>
         <CarouselFadeExample />
         <Vehicles />
+        <ToolsTabs />
       </div>   
     </main>
   )

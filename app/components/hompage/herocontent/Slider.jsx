@@ -89,7 +89,7 @@ function Slider() {
                         width={3000}
                         height={300}
                     />
-                    <CarouselCaption />
+                    <CarouselCaption title="2024 Passport" description="The road less traveled awaits." actionLabel="LEARN MORE" subtitle="TrailSport shown in Sonic Gray Pearl* with Honda Genuine Accessories. Pre-production wheels shown." />
                 </Carousel.Item>
                 <Carousel.Item>
                     <CarouselImage
@@ -98,7 +98,7 @@ function Slider() {
                         width={3000}
                         height={300}
                     />
-                    <CarouselCaption title="2024 Prologue" description="All-electric. Coming 2024." actionLabel="LEARN MORE" />
+                    <CarouselCaption title="2024 Prologue" description="All-electric. Coming 2024." actionLabel="LEARN MORE" subtitle="2024 Prologue Elite shown in North Shore Pearl.*" />
                 </Carousel.Item>
                 <Carousel.Item>
                     <CarouselImage
@@ -107,14 +107,14 @@ function Slider() {
                         width={3000}
                         height={300}
                     />
-                    <CarouselCaption title="2024 Accord" description="Sleek style meets  spirited performance in the 2024 Accord." actionLabel="LEARN MORE" />
-                </Carousel.Item>                
+                    <CarouselCaption title="2024 Accord" description="Sleek style meets  spirited performance in the 2024 Accord." button="Touring Hybrid Special APR 5.9% APR for 24-48 months" actionLabel="LEARN MORE" subtitle="Sport-L Hybrid shown in Crystal Black Pearl." />
+                </Carousel.Item>
             </Carousel>
 
             <div className="absolute right-0 bottom-0 flex">
-            <SlideIndicator
-        currentSlide={currentSlide}
-        totalSlides={3} /> {/* Included SlideIndicator */}
+                <SlideIndicator
+                    currentSlide={currentSlide}
+                    totalSlides={3} /> {/* Included SlideIndicator */}
                 <SliderUiControl
                     isPlaying={isPlaying}
                     duration={remainingTime}
@@ -128,8 +128,8 @@ function Slider() {
                 />
             </div>
             <div className='relative left-0 bottom-6 text-white ml-12 text-xs'>
-                <p>2024 Prologue Elite shown in North Shore Pearl.*</p>
-                </div>
+                <p></p>
+            </div>
         </div>
     );
 }
