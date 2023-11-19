@@ -18,7 +18,7 @@ const VehicleList = ({ list }) => {
 
           )}
           {/* Content will be displayed over the image */}
-          <h4 className="text-white absolute top-6 left-6">{vehicle.description || 'No Description'}</h4>
+          <h4 className="text-white absolute top-6 left-6 text-xl">{vehicle.description || 'No Description'}</h4>
           <div className="absolute bottom-4 left-7 text-white">
             {vehicle.year}
             <h5 className='text-white text-2xl'>{vehicle.make}</h5>
