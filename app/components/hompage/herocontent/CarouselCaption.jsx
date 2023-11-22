@@ -1,6 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
 
-function Caption({ title, description, actionLabel, subtitle, button }) {
+function Caption({ title, description, actionLabel, subtitle }) {
   return (
     <div className='absolute bottom-0 left-9 flex flex-col justify-start ml-6 max-w-sm'>
       <h1 className='text-white text-sm'>{title}</h1>

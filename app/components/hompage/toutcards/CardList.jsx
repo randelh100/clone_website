@@ -9,6 +9,7 @@ const CardList = ({ list }) => {
                     {card.image && (
                         <div className="relative">
                             <Image
+                            className='hover:scale-105'
                                 objectFit="cover"
                                 src={card.image}
                                 alt={`${card.title} ${card.description}`}
