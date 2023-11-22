@@ -48,3 +48,7 @@ body .carousel-control-next {
   transform: scale(1.1); /* Adjust scale value to how much you want the icon to grow */
   transition: transform 0.3s; /* Smooth transition for the transform */
 }
+
+.white-logo {
+  filter: brightness(0) invert(1);
+}

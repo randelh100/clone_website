@@ -47,7 +47,7 @@ const ContactSection = () => {
             </div>
             <div className='mb-8'>
                 <p>Revive the latest news and exclusive updates.</p>
-                <a href="/" className=''>STAY INFORMED</a>
+                <a href="/" className=' text-blue-500 text-md border-2 border-blue-500 rounded-full px-2 py-2 max-w-[120px] no-underline'>STAY INFORMED</a>
             </div>
         </div>
     )

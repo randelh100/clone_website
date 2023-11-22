@@ -1,6 +1,7 @@
 import React from 'react'
 import ContactSection from './ContactSection';
 import LinksSection from './LinksSection';
+import BrandsSection from './BrandsSection';
 
 const bluehondalogo = '/logos/bluehondalogo.png';
 
@@ -12,6 +13,7 @@ const Footer = () => {
       </div>
 <ContactSection />
 <LinksSection />
+<BrandsSection />
     </footer>
 
   )
