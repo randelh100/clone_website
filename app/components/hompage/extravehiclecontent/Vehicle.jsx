@@ -9,6 +9,7 @@ const Vehicle = ({ header, src }) => {
                         objectFit="cover"
                         src={src}
                         alt={`${header}`}
+                        className='rounded-s'
                     />
                 </div>
                 <h2 className="text-white absolute top-0 left-2 text-xl">{header}</h2>

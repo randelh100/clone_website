@@ -3,9 +3,9 @@ import Link from 'next/link'
 
 const CardList = ({ list }) => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 w-full pl-10 pr-10 gap-2 mt-4'>
+        <div className='grid grid-cols-1 md:grid-cols-2 w-full gap-4 mt-4'>
             {list.map((card, index) => (
-                <div key={index} className="relative bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg transition-shadow m-2">
+                <div key={index} className="relative bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                     {card.image && (
                         <div className="relative">
                             <Image
@@ -25,7 +25,7 @@ const CardList = ({ list }) => {
                                 {card.url && (
                                     <div className="absolute bottom-0 left-0 p-2">
                                         <Link href={card.url}>
-                                            <span className=" text-white text-xs font-bold inline-block rounded cursor-pointer px-2 py-2">
+                                            <span className=" text-white text-xs font-bold inline-block rounded cursor-pointer p-2">
                                                 {card.buttonText || 'Click Here'}
                                             </span>
                                         </Link>

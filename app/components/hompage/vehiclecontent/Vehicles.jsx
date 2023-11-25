@@ -112,9 +112,17 @@ const Vehicles = () => {
 
 
     const [activeList, setActiveList] = useState(featured);
+    const [activeTab, setActiveTab] = useState('Featured');
+
+    const getTabClass = (tabName) => {
+        return tabName === activeTab ? 'text-blue-500 no-underline' : 'text-black no-underline';
+    };
+
+
+
 
     const cars = [
-        
+
         {
             description: "Start something fun.",
             year: "2024",
@@ -125,7 +133,7 @@ const Vehicles = () => {
             subDescription: "Touring shown Aegean Blue Metallic at $30,550.*",
         },
 
-         {
+        {
             description: "Gear up for a good time.",
             year: "2024",
             make: "Civic Hatchback",
@@ -154,7 +162,7 @@ const Vehicles = () => {
             image: VehicleListPhoto11,
             subDescription: "Touring shown Aegean Blue Metallic at $30,550.*",
         },
-    
+
     ];
     const minivanAndTruck = [
         {
@@ -166,7 +174,7 @@ const Vehicles = () => {
             image: VehicleListPhoto12,
             subDescription: "Elite shown in Obsidian Blue Pearl at $49,970*",
         },
-        
+
         {
             description: "Built for the long haul.",
             year: "2023",
@@ -215,8 +223,9 @@ const Vehicles = () => {
         },
     ];
 
-    const setActiveVehicleList = (list) => {
+    const setActiveVehicleList = (list, tabName) => {
         setActiveList(list);
+        setActiveTab(tabName); // Update the activeTab state
     };
 
 
@@ -225,63 +234,63 @@ const Vehicles = () => {
         <div>
             <nav className="flex items-center mt-16 mb-6">
                 <div className="flex">
-                    <h1 className="ml-10 text-2xl w-44">Vehicles</h1>
+                    <h1 className="ml-9 text-2xl w-44">Vehicles</h1>
                 </div>
                 <div className="w-3/4">
                     <ul className="flex gap-5 pt-2 ">
                         <li>
                             <button
-                                onClick={() => setActiveVehicleList(featured)}
-                                className='text-black no-underline'
-                            >
+                                 onClick={() => setActiveVehicleList(featured, 'Featured')}
+                                 className={getTabClass('Featured')}
+                             >
                                 Featured
                             </button>
                         </li>
                         <li>
                             <button
-                                onClick={() => setActiveVehicleList(suv)}
-                                className='text-black no-underline'
-                            >
+                                 onClick={() => setActiveVehicleList(suv, 'SUVs & Crossovers')}
+                                 className={getTabClass('SUVs & Crossovers')}
+                             >
                                 SUVs & Crossovers
                             </button>
                         </li>
                         <li>
                             <button
-                                onClick={() => setActiveVehicleList(cars)}
-                                className='text-black no-underline'
-                            >
+                                 onClick={() => setActiveVehicleList(cars, 'cars')}
+                                 className={getTabClass('cars')}
+                             >
                                 Cars
                             </button>
                         </li>
                         <li>
                             <button
-                                onClick={() => setActiveVehicleList(minivanAndTruck)}
-                                className='text-black no-underline'
-                            >
+                                 onClick={() => setActiveVehicleList(minivanAndTruck, 'minivan & truck')}
+                                 className={getTabClass('minivan & truck')}
+                             >
                                 Minivan & Truck
                             </button>
                         </li>
                         <li>
                             <button
-                                onClick={() => setActiveVehicleList(electrified)}
-                                className='text-black no-underline'
-                            >
+                                 onClick={() => setActiveVehicleList(electrified, 'electrified')}
+                                 className={getTabClass('electrified')}
+                             >
                                 Electrified
                             </button>
                         </li>
                         <li>
                             <button
-                                onClick={() => setActiveVehicleList(future)}
-                                className='text-black no-underline'
+                                onClick={() => setActiveVehicleList(future, 'future')}
+                                className={getTabClass('future')}
                             >
                                 Future
                             </button>
                         </li>
                         <li>
                             <button
-                                onClick={() => setActiveVehicleList(preOwned)}
-                                className='text-black no-underline'
-                            >
+                                 onClick={() => setActiveVehicleList(preOwned, 'pre-owned')}
+                                 className={getTabClass('pre-owned')}
+                             >
                                 Pre-Owned
                             </button>
                         </li>
@@ -296,6 +305,7 @@ const Vehicles = () => {
                     </button>
                 </div>
             </nav>
+
             <VehicleList
                 list={activeList}
             />

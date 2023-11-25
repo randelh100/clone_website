@@ -1,53 +1,40 @@
 import React from 'react'
 import { TiSocialYoutube } from "react-icons/ti";
-import { CiTwitter } from "react-icons/ci";
-import { PiTiktokLogoLight } from "react-icons/pi";
+import { FaTwitter } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
 import { CiInstagram } from "react-icons/ci";
-import { FiFacebook } from "react-icons/fi";
-import { SlSocialLinkedin } from "react-icons/sl";
-import { IoLogoPinterest } from "react-icons/io";
-import { FaSnapchat } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaPinterestP } from "react-icons/fa";
+import { FaSnapchatGhost } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
+import Link from 'next/link';
 
 const ContactSection = () => {
     return (
-        <div className='flex justify-between border-b-2 border-gray-500'>
-            <div className='flex flex-col'>
-                <p> <span>Stay in Touch</span></p>
-                <div className='flex gap-2'>
-                    <div className="bg-blue-500 rounded-full p-2">
-                        <CiTwitter className="text-white" />
-                    </div>
-                    <div className="bg-blue-500 rounded-full p-2">
-                        <PiTiktokLogoLight className="text-white" />
-                    </div>
-                    <div className="bg-blue-500 rounded-full p-2">
-                        <CiInstagram className="text-white" />
-                    </div>
-                    <div className="bg-blue-500 rounded-full p-2">
-                        <FiFacebook className="text-white" />
-                    </div>
-                    <div className="bg-blue-500 rounded-full p-2">
-                        <SlSocialLinkedin className="text-white" />
-                    </div>
-                    <div className="bg-blue-500 rounded-full p-2">
-                        <TiSocialYoutube className="text-white" />
-                    </div>
-                    <div className="bg-blue-500 rounded-full p-2">
-                        <IoLogoPinterest className="text-white" />
-                    </div>
-                    <div className="bg-blue-500 rounded-full p-2">
-                        <FaSnapchat className="text-white" />
+        <div className='border-b-2 border-gray-300'>
+            <div className='max-w-[115rem] mx-auto flex justify-between'>
+                <div className='flex flex-col'>
+                    <p>Stay in Touch</p>
+                    <div className='flex gap-2'>
+                        <FaTwitter className="text-white bg-blue-500 rounded-full p-2" size={30} />
+                        <FaTiktok className="text-white  bg-blue-500 rounded-full p-2" size={30} />
+                        <CiInstagram className="text-white  bg-blue-500 rounded-full p-2" size={30} />
+                        <FaFacebookF className="text-white  bg-blue-500 rounded-full p-2" size={30} />
+                        <FaLinkedinIn className="text-white  bg-blue-500 rounded-full p-2" size={30} />
+                        <TiSocialYoutube className="text-white  bg-blue-500 rounded-full p-2" size={30} />
+                        <FaPinterestP className="text-white  bg-blue-500 rounded-full p-2" size={30} />
+                        <FaSnapchatGhost className="text-white  bg-blue-500 rounded-full p-2" size={30} />
                     </div>
                 </div>
-            </div>
-            <div className='flex'>
-            <IoSearch />
-            <input type="text" placeholder='Search for anything Honda'/>
-            </div>
-            <div className='mb-8'>
-                <p>Revive the latest news and exclusive updates.</p>
-                <a href="/" className=' text-blue-500 text-md border-2 border-blue-500 rounded-full px-2 py-2 max-w-[120px] no-underline'>STAY INFORMED</a>
+                <div className='flex items-center gap-2'>
+                    <IoSearch />
+                    <input type="text" placeholder='Search for anything Honda' />
+                </div>
+                <div className='mb-4 flex flex-col items-end'>
+                    <p>Revive the latest news and exclusive updates.</p>
+                    <Link href="/" className=' text-blue-500 text-md font-bold border-2 border-blue-500 rounded-full px-4 py-2 no-underline'>STAY INFORMED</Link>
+                </div>
             </div>
         </div>
     )

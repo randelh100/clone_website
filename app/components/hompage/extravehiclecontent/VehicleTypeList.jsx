@@ -6,8 +6,8 @@ const VehicleTypeList = ({ header, list }) => {
     return (
         <div>
             <div> 
-                <h2 className='ml-10'>{header}</h2>
-                <div className='flex gap-4  ml-10 mr-10'>
+                <h2 className='font-bold mt-3 text-2xl'>{header}</h2>
+                <div className='flex gap-4'>
                 {list.map((vehicle, index) => (
                     <Vehicle key={index} header={vehicle.header} src={vehicle.src} />
                 ))}

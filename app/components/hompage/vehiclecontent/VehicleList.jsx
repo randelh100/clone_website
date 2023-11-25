@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const VehicleList = ({ list }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 ml-10 mr-10">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
       {list.map((vehicle, index) => (
         <div key={index} className="relative flex flex-col items-center justify-center bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg transition-shadow">
           {/* Image will fill the div */}

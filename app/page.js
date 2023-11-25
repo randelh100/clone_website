@@ -87,7 +87,7 @@ export default function Home() {
 
   return (
     <main >
-      <div>
+      <div className='max-w-[115rem] mx-auto'>
         <CarouselFadeExample />
         <Vehicles />
         <ToolsTabs />

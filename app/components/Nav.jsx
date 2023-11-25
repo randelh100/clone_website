@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { IoSearch } from "react-icons/io5";
+import Image from 'next/image';
 
 
 const hondalogo = '/logos/hondalogo.png';
@@ -22,22 +24,20 @@ const Nav = () => {
     const linkClass = hasScrolled ? 'text-black' : 'text-white';
 
     return (
-        <div>
-            <nav className={`fixed top-0 flex justify-end gap-5 w-full h-14 pr-20 transition-colors duration-300 ${hasScrolled ? 'bg-white shadow-md' : ''}`}>
+        <nav className={`fixed top-0 h-14 transition-colors w-full duration-300 ${hasScrolled ? 'bg-white shadow-md' : ''}`}>
+            <div className='flex  max-w-[100rem] justify-between mx-auto'>
+                <Image src={hondalogo} width={60} height={300} alt="honda logo" className={`h-12 bg ${!hasScrolled ? 'white-logo' : ''}`} />
                 <ul className='flex items-center gap-10'>
-                    <li className='absolute left-0 pl-9'> <img src={hondalogo} alt="honda logo" className='h-12' /></li>
-                    {['Vehicles', 'Shopping Tools', 'Owners', 'Explore', 'Find a Dealer', 'EN', 'Locations', 'Search'].map((text) => (
+                    {['Vehicles', 'Shopping Tools', 'Owners', 'Explore', 'Find a Dealer', 'EN', 'Locations', <IoSearch size={24} />].map((text) => (
                         <li key={text}>
-                            <Link href="/">
-                                <span className={`cursor-pointer no-underline hover:underline ${linkClass}`}>
-                                    {text}
-                                </span>
+                            <Link href="/" className={`no-underline hover:border-b-2 hover:pb-3 ${linkClass}`}>
+                                {text}
                             </Link>
                         </li>
                     ))}
                 </ul>
-            </nav>
-        </div>
+            </div>
+        </nav>
     );
 }
 

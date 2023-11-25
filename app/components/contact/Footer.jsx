@@ -7,9 +7,9 @@ const bluehondalogo = '/logos/bluehondalogo.png';
 
 const Footer = () => {
   return (
-    <footer className='mt-16 border-t-4 border-blue-400'>
-      <div className='flex justify-center border-b-2 mb-8'>
-      <img src={bluehondalogo} alt="Blue Honda Logo" className='h-28 w-44'/>
+    <footer className='mt-16 border-t-4 border-blue-500 '>
+      <div className='flex justify-center border-b-2 mb-3 max-w-[115rem] mx-auto'>
+      <img src={bluehondalogo} alt="Blue Honda Logo" className='h-30 w-48 mt-2'/>
       </div>
 <ContactSection />
 <LinksSection />
