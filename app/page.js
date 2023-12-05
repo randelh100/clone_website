@@ -21,31 +21,37 @@ export default function Home() {
   const Electrified = [
 
     {
+      id: 'electrified',
       header: 'Electrified',
       src: ElectrifiedVehicles
     },
 
     {
+      id: 'prologue',
       header: 'Prologue',
       src: Prologue
     },
 
     {
+      id: 'crv_hybrid',
       header: 'CR-V Hybrid',
       src: CRV_Hybrid
     },
 
     {
+      id: 'accord_hybrid',
       header: 'Accord Hybrid',
       src: Accord_Hybrid
     },
 
     {
+      id: 'crv_fuelcell',
       header: 'CR-V Fuel Cell',
       src: CRV_FuelCell
     },
 
     {
+      id: 'hybridracer',
       header: 'Hybrid Racer',
       src: HybridRacer
     }
@@ -54,31 +60,37 @@ export default function Home() {
 
   const Rugged = [
     {
+      id: 'rugged',
       header: 'Rugged Capability',
       src: RuggedCapability
     },
 
     {
+      id: 'pilot',
       header: 'Pilot',
       src: Pilot
     },
 
     {
+      id: 'passport',
       header: 'Passport',
       src: Passport
     },
 
     {
+      id: 'ridgeline',
       header: 'Ridgeline',
       src: Ridgeline
     },
 
     {
+      id: 'crv',
       header: 'CR-V',
       src: Crv
     },
 
     {
+      id: 'offroad',
       header: 'Off-Road Racing',
       src: OffRoad
     }
@@ -92,8 +104,8 @@ export default function Home() {
         <Vehicles />
         <ToolsTabs />
         <Cards />
-        <VehicleTypeList
-          header="Electrificatoin"
+        <VehicleTypeList 
+          header="Electrification"
           list={Electrified}
         />
         <VehicleTypeList

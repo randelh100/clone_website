@@ -18,6 +18,7 @@ import VehicleListPhoto14 from '../../../../public/vehicleList_photos/VehicleLis
 import VehicleListPhoto15 from '../../../../public/vehicleList_photos/VehicleListPhoto15.jpg';
 import VehicleListPhoto16 from '../../../../public/vehicleList_photos/VehicleListPhoto16.jpg';
 import VehicleListPhoto17 from '../../../../public/vehicleList_photos/VehicleListPhoto17.jpg';
+import VehicleListPhoto18 from '../../../../public/vehicleList_photos/VehicleListPhoto18.jpg';
 
 const Vehicles = () => {
 
@@ -59,6 +60,16 @@ const Vehicles = () => {
             make: "Prolouge",
             image: VehicleListPhoto4,
             subDescription: "2024 Prologue Elite shown in North Shore Pearl.*",
+        },
+
+        {
+            description: "Start something fun.",
+            year: "2024",
+            make: "Civic Sedan",
+            msrp: "Starting MSRP*",
+            price: "$23,950",
+            image: VehicleListPhoto8,
+            subDescription: "Touring shown Aegean Blue Metallic at $30,550.*",
         }
     ];
 
@@ -81,7 +92,7 @@ const Vehicles = () => {
             msrp: "Starting MSRP*",
             price: "$29,500",
             image: VehicleListPhoto2,
-            subDescription: "",
+            subDescription: "Sport Touring Hybrid with AWD shown in Platinum White Pearl* at $39,850.*",
         },
 
         {
@@ -102,9 +113,17 @@ const Vehicles = () => {
             price: "$37,090",
             image: VehicleListPhoto7,
             subDescription: "TrailSport shown in Lunar Silver Metalic with Honda Genuine Accessories at $48,000 MSRP.* 18 city/23 highway mpg rating.*",
+        },
+
+        {
+            description: "Your passport to adventure.",
+            year: "2024",
+            make: "Passport",
+            msrp: "Starting MSRP*",
+            price: "$41,900",
+            image: VehicleListPhoto18,
+            subDescription: "TrailSport shown in Lunar Silver Metallic at $44,500.* Pre-production wheels shown.",
         }
-
-
 
     ];
 
@@ -162,6 +181,26 @@ const Vehicles = () => {
             image: VehicleListPhoto11,
             subDescription: "Touring shown Aegean Blue Metallic at $30,550.*",
         },
+
+        {
+            description: "Elegant design, redifined.",
+            year: "2024",
+            make: "Accord",
+            msrp: "Starting MSRP*",
+            price: "$27,895",
+            image: VehicleListPhoto,
+            subDescription: "Sport-L Hybrid shown in Radiant Red Metallic* at $34,525.*",
+        },
+
+        {
+            description: "The evolution of the hybrid sedan.",
+            year: "2024",
+            make: "Accord Hybrid",
+            msrp: "Starting MSRP*",
+            price: "$32,545",
+            image: VehicleListPhoto14,
+            subDescription: "Touring Hybrid shown in Canyon River Blue Metallic at $38,540 MSRP.* 46 city/41 highway mpg rating.*",
+        }
 
     ];
     const minivanAndTruck = [
@@ -243,7 +282,7 @@ const Vehicles = () => {
                                  onClick={() => setActiveVehicleList(featured, 'Featured')}
                                  className={getTabClass('Featured')}
                              >
-                                Featured
+                                Featured <span>({featured.length})</span>
                             </button>
                         </li>
                         <li>
@@ -251,7 +290,7 @@ const Vehicles = () => {
                                  onClick={() => setActiveVehicleList(suv, 'SUVs & Crossovers')}
                                  className={getTabClass('SUVs & Crossovers')}
                              >
-                                SUVs & Crossovers
+                                SUVs & Crossovers <span>({suv.length})</span>
                             </button>
                         </li>
                         <li>
@@ -259,7 +298,7 @@ const Vehicles = () => {
                                  onClick={() => setActiveVehicleList(cars, 'cars')}
                                  className={getTabClass('cars')}
                              >
-                                Cars
+                                Cars <span>({cars.length})</span>
                             </button>
                         </li>
                         <li>
@@ -267,7 +306,7 @@ const Vehicles = () => {
                                  onClick={() => setActiveVehicleList(minivanAndTruck, 'minivan & truck')}
                                  className={getTabClass('minivan & truck')}
                              >
-                                Minivan & Truck
+                                Minivan & Truck <span>({minivanAndTruck.length})</span>
                             </button>
                         </li>
                         <li>
@@ -275,7 +314,7 @@ const Vehicles = () => {
                                  onClick={() => setActiveVehicleList(electrified, 'electrified')}
                                  className={getTabClass('electrified')}
                              >
-                                Electrified
+                                Electrified <span>({electrified.length})</span>
                             </button>
                         </li>
                         <li>
@@ -283,7 +322,7 @@ const Vehicles = () => {
                                 onClick={() => setActiveVehicleList(future, 'future')}
                                 className={getTabClass('future')}
                             >
-                                Future
+                                Future <span>({future.length})</span>
                             </button>
                         </li>
                         <li>
@@ -291,7 +330,7 @@ const Vehicles = () => {
                                  onClick={() => setActiveVehicleList(preOwned, 'pre-owned')}
                                  className={getTabClass('pre-owned')}
                              >
-                                Pre-Owned
+                                Pre-Owned <span>({preOwned.length})</span>
                             </button>
                         </li>
                     </ul>

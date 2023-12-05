@@ -5,7 +5,7 @@ const CardList = ({ list }) => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 w-full gap-4 mt-4'>
             {list.map((card, index) => (
-                <div key={index} className="relative bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                <div key={index} className="relative bg-white rounded-sm overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                     {card.image && (
                         <div className="relative">
                             <Image
