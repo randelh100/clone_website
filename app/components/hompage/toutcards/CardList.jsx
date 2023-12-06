@@ -3,19 +3,17 @@ import Link from 'next/link'
 
 const CardList = ({ list }) => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 w-full gap-4 mt-4'>
+        <div className='flex overflow-x-auto md:overflow-hidden w-full gap-4 mt-4'>
             {list.map((card, index) => (
-                <div key={index} className="relative bg-white rounded-sm overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                <div key={index} className="relative bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow flex-none md:flex-grow-0 md:flex-shrink h-[40rem] w-[70%] md:w-1/2">
                     {card.image && (
-                        <div className="relative">
+                        <div className="relative h-full">
                             <Image
-                            className='hover:scale-105'
-                                objectFit="cover"
+                                className='hover:scale-105'
                                 src={card.image}
                                 alt={`${card.title} ${card.description}`}
-                                width={500}
-                                height={300}
-                                layout="responsive"
+                                layout="fill"
+                                objectFit="cover"
                             />
                             <div className="absolute inset-0 flex flex-col justify-between">
                                 <div className="p-2">

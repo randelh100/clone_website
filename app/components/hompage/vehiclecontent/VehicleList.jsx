@@ -34,10 +34,19 @@ console.log(itemPositions[currentIndex]);
         &#8592; {/* Left arrow symbol */}
       </button>
 
-      <div className="gap-4 flex overflow-x-auto pb-4"
-        ref={scrollContainerRef}>
+      <div className="gap-4 flex overflow-x-auto pb-4" ref={scrollContainerRef}>
         {list.map((vehicle, index) => (
-          <MainVehicle key={index} image={vehicle.image} description={vehicle.description} year={vehicle.year} make={vehicle.make} msrp={vehicle.msrp} price={vehicle.price} subDescription={vehicle.subDescription} />
+          <MainVehicle 
+            key={index}
+            className={`flex-none`}
+            image={vehicle.image}
+            description={vehicle.description}
+            year={vehicle.year}
+            make={vehicle.make}
+            msrp={vehicle.msrp}
+            price={vehicle.price}
+            subDescription={vehicle.subDescription}
+          />
         ))}
       </div>
 

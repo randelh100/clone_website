@@ -8,7 +8,7 @@ const ST_PE_icon = '/shoppingtools_icons/ST_PE_icon.svg';
 
 const ToolsTabs = () => {
     return (
-        <div>
+        <div className='flex flex-col'>
             <h2 className='text-2xl font-bold pt-16'>Shopping Tools</h2>
             <ul className='flex w-full p-0 gap-4'>
                 <li className='flex items-center border h-40 justify-center bg-gray-100 group w-1/4'>

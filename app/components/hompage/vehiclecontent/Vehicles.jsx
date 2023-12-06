@@ -19,6 +19,7 @@ import VehicleListPhoto15 from '../../../../public/vehicleList_photos/VehicleLis
 import VehicleListPhoto16 from '../../../../public/vehicleList_photos/VehicleListPhoto16.jpg';
 import VehicleListPhoto17 from '../../../../public/vehicleList_photos/VehicleListPhoto17.jpg';
 import VehicleListPhoto18 from '../../../../public/vehicleList_photos/VehicleListPhoto18.jpg';
+import VehicleButton from './VehicleButton';
 
 const Vehicles = () => {
 
@@ -268,81 +269,70 @@ const Vehicles = () => {
     };
 
 
-
     return (
         <div>
-            <nav className="flex items-center mt-16 mb-6">
-                <div className="flex">
-                    <h1 className="ml-9 text-2xl w-44">Vehicles</h1>
-                </div>
-                <div className="w-3/4">
-                    <ul className="flex gap-5 pt-2 ">
-                        <li>
-                            <button
-                                 onClick={() => setActiveVehicleList(featured, 'Featured')}
-                                 className={getTabClass('Featured')}
-                             >
-                                Featured <span>({featured.length})</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                 onClick={() => setActiveVehicleList(suv, 'SUVs & Crossovers')}
-                                 className={getTabClass('SUVs & Crossovers')}
-                             >
-                                SUVs & Crossovers <span>({suv.length})</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                 onClick={() => setActiveVehicleList(cars, 'cars')}
-                                 className={getTabClass('cars')}
-                             >
-                                Cars <span>({cars.length})</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                 onClick={() => setActiveVehicleList(minivanAndTruck, 'minivan & truck')}
-                                 className={getTabClass('minivan & truck')}
-                             >
-                                Minivan & Truck <span>({minivanAndTruck.length})</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                 onClick={() => setActiveVehicleList(electrified, 'electrified')}
-                                 className={getTabClass('electrified')}
-                             >
-                                Electrified <span>({electrified.length})</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                onClick={() => setActiveVehicleList(future, 'future')}
-                                className={getTabClass('future')}
-                            >
-                                Future <span>({future.length})</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                 onClick={() => setActiveVehicleList(preOwned, 'pre-owned')}
-                                 className={getTabClass('pre-owned')}
-                             >
-                                Pre-Owned <span>({preOwned.length})</span>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex ml-10">
+            <nav className="xl:flex-row flex-col flex xl:items-center mt-16 mb-6 overflow-x-auto">
+                <div className="flex justify-between">
+                    <h1 className="text-2xl w-44">Vehicles</h1>
                     <button
                         href={"/"}
-                        className='no-underline text-sm text-blue-500'
+                        className='no-underline text-sm text-blue-500 w-fit mr-10 xl:hidden'
                     >
                         COMPARE MODELS
                     </button>
                 </div>
+                <div className="w-3/4">
+                    <ul className="flex gap-5 pt-2 ">
+                        <VehicleButton
+                            onClick={() => setActiveVehicleList(featured, 'Featured')}
+                            className={getTabClass('Featured')}
+                            text={"Featured"}
+                            length={featured.length}
+                        />
+                        <VehicleButton
+                            onClick={() => setActiveVehicleList(suv, 'suv')}
+                            className={getTabClass('suv')}
+                            text={"SUV"}
+                            length={suv.length}
+                        />
+                        <VehicleButton
+                            onClick={() => setActiveVehicleList(cars, 'cars')}
+                            className={getTabClass('cars')}
+                            text={"Cars"}
+                            length={cars.length}
+                        />
+                        <VehicleButton
+                            onClick={() => setActiveVehicleList(minivanAndTruck, 'minivan & truck')}
+                            className={getTabClass('minivan & truck')}
+                            text={"Minivan & Truck"}
+                            length={minivanAndTruck.length}
+                        />
+                        <VehicleButton
+                            onClick={() => setActiveVehicleList(electrified, 'electrified')}
+                            className={getTabClass('electrified')}
+                            text={"Electrified"}
+                            length={electrified.length}
+                        />
+                        <VehicleButton
+                            onClick={() => setActiveVehicleList(future, 'future')}
+                            className={getTabClass('future')}
+                            text={"Future"}
+                            length={future.length}
+                        />
+                        <VehicleButton
+                            onClick={() => setActiveVehicleList(preOwned, 'pre-owned')}
+                            className={getTabClass('pre-owned')}
+                            text={"Pre-Owned"}
+                            length={preOwned.length}
+                        />
+                    </ul>
+                </div>
+                <button
+                    href={"/"}
+                    className='no-underline text-sm text-blue-500 w-fit ml-10 hidden xl:block'
+                >
+                    COMPARE MODELS
+                </button>
             </nav>
 
             <VehicleList

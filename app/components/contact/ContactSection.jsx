@@ -12,8 +12,8 @@ import Link from 'next/link';
 
 const ContactSection = () => {
     return (
-        <div className='border-b-2 border-gray-300'>
-            <div className='max-w-[115rem] mx-auto flex justify-between'>
+        <div className='border-b-2 border-gray-300 pb-4'>
+            <div className='max-w-[115rem] mx-auto flex flex-col md:flex-row md:justify-between items-center'>
                 <div className='flex flex-col'>
                     <p>Stay in Touch</p>
                     <div className='flex gap-2'>
@@ -31,9 +31,9 @@ const ContactSection = () => {
                     <IoSearch />
                     <input type="text" placeholder='Search for anything Honda' />
                 </div>
-                <div className='mb-4 flex flex-col items-end'>
+                <div className='flex flex-col items-end'>
                     <p>Revive the latest news and exclusive updates.</p>
-                    <Link href="/" className=' text-blue-500 text-md font-bold border-2 border-blue-500 rounded-full px-4 py-2 no-underline'>STAY INFORMED</Link>
+                    <Link href="/" className=' text-blue-500 text-md font-bold border-2 border-blue-500 rounded-full px-4 py-1 no-underline'>STAY INFORMED</Link>
                 </div>
             </div>
         </div>

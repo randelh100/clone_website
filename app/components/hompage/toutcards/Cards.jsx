@@ -24,9 +24,7 @@ const Cards = () => {
     ];
 
     return (
-       <div> 
-        <CardList list={[...shopCertified, ...learnMore]}/>
-       </div>
+        <CardList list={[...shopCertified, ...learnMore]} />
     );
 }
 
