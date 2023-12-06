@@ -2,7 +2,7 @@ const VehicleButton = ({onClick, className, text, length}) => {
     return (
         <li>
         <button
-             onClick={onclick}
+             onClick={onClick}
              className={className}
          >
            {text} <span>({length})</span>
