@@ -16,7 +16,7 @@ const privacyoptions = '/logos/privacyoptions.svg';
 const BrandsSection = () => {
     return (
         <div className='bg-blue-500'>
-            <div className='max-w-[90rem] mx-auto'>
+            <div className='max-w-[115rem] mx-auto'>
                 <div className='flex justify-between'>
                 <div className='flex flex-col md:flex-row justify-between items-center text-white text-xs mt-4'>
                     <h2 className='text-sm'>

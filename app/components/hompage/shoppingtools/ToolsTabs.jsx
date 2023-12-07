@@ -13,25 +13,25 @@ const ToolsTabs = () => {
             <ul className='flex w-full p-0 gap-4'>
                 <li className='flex items-center border h-40 justify-center bg-gray-100 group w-1/4'>
                     <div className='flex flex-col items-center justify-center group-hover:scale-110 transition-transform duration-300'>
-                        <img src={ST_BAP_icon} alt="tool icon" className="hover-grow" />
+                        <img src={ST_BAP_icon} alt="tool icon" className="hover-grow h-24" />
                         <Link href="#" className='text-center text-black no-underline'>Build & Price</Link>
                     </div>
                 </li>
                 <li className='flex items-center border h-40 justify-center bg-gray-100 group w-1/4'>
                     <div className='flex flex-col items-center justify-center group-hover:scale-110 transition-transform duration-300'>
-                        <img src={ST_Offers_icon} alt="Offer icon" className="hover-grow" />
+                        <img src={ST_Offers_icon} alt="Offer icon" className="hover-grow h-24" />
                         <Link href="#" className='text-center text-black no-underline'>See Offers</Link>
                     </div>
                 </li>
                 <li className='flex items-center border h-40 justify-center bg-gray-100 group w-1/4'>
                     <div className='flex flex-col items-center justify-center group-hover:scale-110 transition-transform duration-300'>
-                        <img src={ST_SI_icon} alt="see offers" className="hover-grow" />
+                        <img src={ST_SI_icon} alt="see offers" className="hover-grow h-24" />
                         <Link href="#" className='text-center text-black no-underline'>Search Inventory</Link>
                     </div>
                 </li>
                 <li className='flex items-center border h-40 justify-center bg-gray-100 group w-1/4'>
                     <div className='flex flex-col items-center justify-center group-hover:scale-110 transition-transform duration-300'>
-                        <img src={ST_PE_icon} alt="Estimate Payments" className="hover-grow" />
+                        <img src={ST_PE_icon} alt="Estimate Payments" className="hover-grow h-24" />
                         <Link href="#" className='text-center text-black no-underline'>Estimate Payments</Link>
                     </div>
                 </li>

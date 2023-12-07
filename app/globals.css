@@ -86,3 +86,17 @@ body .carousel-control-next {
 }
 
 
+/* For Webkit (Chrome, Safari, etc.) */
+.nav-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+.nav-scrollbar {
+  scrollbar-width: none;
+}
+
+/* For Internet Explorer and Edge */
+.nav-scrollbar {
+  -ms-overflow-style: none;
+}

@@ -20,20 +20,23 @@ import VehicleListPhoto16 from '../../../../public/vehicleList_photos/VehicleLis
 import VehicleListPhoto17 from '../../../../public/vehicleList_photos/VehicleListPhoto17.jpg';
 import VehicleListPhoto18 from '../../../../public/vehicleList_photos/VehicleListPhoto18.jpg';
 import VehicleButton from './VehicleButton';
+import { useRef } from 'react';
 
 const Vehicles = () => {
 
 
+    const scrollContainerRef = useRef(null);
+
     const featured = [
+
         {
-            description: "Elegant design, redifined.",
-            year: "2024",
-            make: "Accord",
-            msrp: "Starting MSRP*",
-            price: "$27,895",
-            image: VehicleListPhoto,
-            subDescription: "Sport-L Hybrid shown in Radiant Red Metallic* at $34,525.*",
+            description: "Our first all electric SUV. Arriving 2024.",
+            year: "FUTURE VEHICLE",
+            make: "Prolouge",
+            image: VehicleListPhoto4,
+            subDescription: "2024 Prologue Elite shown in North Shore Pearl.*",
         },
+
 
         {
             description: "All-around versitility.",
@@ -55,13 +58,17 @@ const Vehicles = () => {
             subDescription: "RTL-E shown* in Modern Steel Metallic* at $44,730.*",
         },
 
+
         {
-            description: "Our first all electric SUV. Arriving 2024.",
-            year: "FUTURE VEHICLE",
-            make: "Prolouge",
-            image: VehicleListPhoto4,
-            subDescription: "2024 Prologue Elite shown in North Shore Pearl.*",
+            description: "Elegant design, redifined.",
+            year: "2024",
+            make: "Accord",
+            msrp: "Starting MSRP*",
+            price: "$27,895",
+            image: VehicleListPhoto,
+            subDescription: "Sport-L Hybrid shown in Radiant Red Metallic* at $34,525.*",
         },
+
 
         {
             description: "Start something fun.",
@@ -135,7 +142,7 @@ const Vehicles = () => {
     const [activeTab, setActiveTab] = useState('Featured');
 
     const getTabClass = (tabName) => {
-        return tabName === activeTab ? 'text-blue-500 no-underline' : 'text-black no-underline';
+        return tabName === activeTab ? 'text-blue-500 no-underline' : 'text-black no-underline ';
     };
 
 
@@ -269,9 +276,26 @@ const Vehicles = () => {
     };
 
 
+
+
+    const scrollLeft = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: -200, behavior: 'smooth' });
+        }
+    };
+
+    const scrollRight = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+        }
+    };
+
+
     return (
         <div>
-            <nav className="xl:flex-row flex-col flex xl:items-center mt-16 mb-6 overflow-x-auto">
+            <nav className="nav-scrollbar xl:flex-row flex-col flex xl:items-center mt-16 mb-6 overflow-x-auto" ref={scrollContainerRef}>
+                <button onClick={scrollLeft} className="absolute">Left</button>
+                <button onClick={scrollRight} className="absolute">Right</button>
                 <div className="flex justify-between">
                     <h1 className="text-2xl w-44">Vehicles</h1>
                     <button
@@ -284,44 +308,44 @@ const Vehicles = () => {
                 <div className="w-3/4">
                     <ul className="flex gap-5 pt-2 ">
                         <VehicleButton
+                            activeTab={activeTab}
                             onClick={() => setActiveVehicleList(featured, 'Featured')}
-                            className={getTabClass('Featured')}
                             text={"Featured"}
                             length={featured.length}
                         />
                         <VehicleButton
-                            onClick={() => setActiveVehicleList(suv, 'suv')}
-                            className={getTabClass('suv')}
+                            onClick={() => setActiveVehicleList(suv, 'SUV')}
+                            activeTab={activeTab}
                             text={"SUV"}
                             length={suv.length}
                         />
                         <VehicleButton
-                            onClick={() => setActiveVehicleList(cars, 'cars')}
-                            className={getTabClass('cars')}
+                            onClick={() => setActiveVehicleList(cars, 'Cars')}
+                            activeTab={activeTab}
                             text={"Cars"}
                             length={cars.length}
                         />
                         <VehicleButton
-                            onClick={() => setActiveVehicleList(minivanAndTruck, 'minivan & truck')}
-                            className={getTabClass('minivan & truck')}
+                            onClick={() => setActiveVehicleList(minivanAndTruck, 'Minivan & Truck')}
+                            activeTab={activeTab}
                             text={"Minivan & Truck"}
                             length={minivanAndTruck.length}
                         />
                         <VehicleButton
-                            onClick={() => setActiveVehicleList(electrified, 'electrified')}
-                            className={getTabClass('electrified')}
+                            onClick={() => setActiveVehicleList(electrified, 'Electrified')}
+                            activeTab={activeTab}
                             text={"Electrified"}
                             length={electrified.length}
                         />
                         <VehicleButton
-                            onClick={() => setActiveVehicleList(future, 'future')}
-                            className={getTabClass('future')}
+                            onClick={() => setActiveVehicleList(future, 'Future')}
+                            activeTab={activeTab}
                             text={"Future"}
                             length={future.length}
                         />
                         <VehicleButton
-                            onClick={() => setActiveVehicleList(preOwned, 'pre-owned')}
-                            className={getTabClass('pre-owned')}
+                            onClick={() => setActiveVehicleList(preOwned, 'Pre-Owned')}
+                            activeTab={activeTab}
                             text={"Pre-Owned"}
                             length={preOwned.length}
                         />
@@ -329,7 +353,7 @@ const Vehicles = () => {
                 </div>
                 <button
                     href={"/"}
-                    className='no-underline text-sm text-blue-500 w-fit ml-10 hidden xl:block'
+                    className='no-underline text-sm text-blue-500 w-fit ml-10 hidden xl:block hover:text-black'
                 >
                     COMPARE MODELS
                 </button>
